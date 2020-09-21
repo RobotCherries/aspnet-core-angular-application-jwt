@@ -15,7 +15,8 @@ namespace ng_core_auth
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
     }
 }

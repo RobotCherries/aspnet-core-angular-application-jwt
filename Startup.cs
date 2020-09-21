@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ng_core_auth.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ng_core_auth
 {
@@ -34,6 +36,12 @@ namespace ng_core_auth
                 {
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
                 });
+            });
+
+            // Connect to Database
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
         }
 
